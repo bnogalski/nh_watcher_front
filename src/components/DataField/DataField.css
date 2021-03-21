@@ -1,0 +1,12 @@
+.DataField {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(134, 134, 134);
+  padding: 10px;
+  /* margin: 2px; */
+  border: 2px solid black;
+  width: 60%;
+  max-width: 600px;
+}

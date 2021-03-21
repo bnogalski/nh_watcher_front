@@ -1,0 +1,9 @@
+.NHWatcher {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+	background:transparent;
+  row-gap: 10px;
+	/* padding-left: 10%; */
+	width: 100%;
+}

@@ -10,8 +10,6 @@ const initialState = {
 };
 
 const updateRigs = (state, action) => {
-	console.log(action);
-
 	let profitability = 0;
 	let unpaidAmount = 0;
 	let speedAccepted = 0;
@@ -39,6 +37,8 @@ const updateRigs = (state, action) => {
 
 const reducer = (state = initialState, action) => {
 	switch (action.type) {
+		case actionTypes.RESET_STATE:
+			return updateRigs(state, initialState);
 		case actionTypes.UPDATE_RIGS:
 			return updateRigs(state, action.rigsUpdateStatus);
 		default:

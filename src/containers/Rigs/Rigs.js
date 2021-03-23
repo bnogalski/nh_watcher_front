@@ -49,8 +49,8 @@ export class Rigs extends Component {
 		const rig = this.props.miningRigs.map((rig) => {
 			let valArray = [];
 
+			let i = 0;
 			for (const key in rig) {
-				let i = 0;
 				if ((key !== 'dispatch') & (key !== 'id') & (key !== 'devices')) {
 					const val = rig[key];
 					valArray.push({
@@ -88,7 +88,7 @@ export class Rigs extends Component {
 				valArray.push({
 					key: i++,
 					name: key,
-					value: this.props[key].toFixed(8)
+					value: this.props[key].toFixed(8),
 				});
 		}
 

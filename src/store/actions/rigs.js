@@ -6,3 +6,9 @@ export const updateRigs = ( rigsUpdateStatus ) => {
     rigsUpdateStatus: rigsUpdateStatus
   }
 }
+
+export const resetRigs = ( ) => {
+  return {
+    type: actionTypes.RESET_STATE,
+  }
+}

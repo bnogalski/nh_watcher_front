@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { MdExpandMore, MdExpandLess } from 'react-icons/md';
 
 const DataArray = (props) => {
+  const refEl = useRef(null);
 	const [hideDetails, setHideDetails] = useState(false);
+  const [maxHeight, setMaxHeight] = useState(0);
 
 	let array = '';
 
 	if (Array.isArray(props.children)) {
 		let i = 0;
 		array = props.children.map((el) => {
-			i++;
 			return (
 				<li
-					key={i}
+					key={i++}
 					className={`px-3 flex justify-between rounded-md gap-x-2 ${
 						i % 2 ? 'bg-purple-200' : ''
 					} hover:bg-purple-600`}
@@ -23,16 +24,33 @@ const DataArray = (props) => {
 			);
 		});
 	}
+  // setMaxHeight(tempMaxHeight);
+
+
+
+  useEffect(()=>{
+    if(refEl.current.scrollHeight !== refEl.current.offsetHeight)
+    {
+      setMaxHeight(refEl.current.scrollHeight);
+    }
+  }, [])
 
 	const details = (
-		<ul className={`w-full m-y rounded-md bg-purple-400}`}>{array}</ul>
+		<ul
+      ref={refEl}
+			className={`transition-all duration-1000 ease-in-out w-full m-y rounded-md bg-purple-400  overflow-hidden`}
+			style={{
+				maxHeight: `${hideDetails ? '0' : maxHeight + 'px'}`,
+			}}
+		>
+			{array}
+		</ul>
 	);
 
 	return (
 		<div
 			className={
-				`sm:w-full   sm:shadow-2xl  sm:px-1  bg-transparent ` +
-				props.bgColor
+				`sm:w-full   sm:shadow-2xl  sm:px-1  bg-transparent ` + props.bgColor
 			}
 			onClick={(e) => {
 				e.preventDefault();
@@ -47,7 +65,8 @@ const DataArray = (props) => {
 					<MdExpandLess className="stroke-current text-right text-2xl" />
 				)}
 			</div>
-			{hideDetails ? null : details}
+			{details}
+			{/* {hideDetails ? null : details} */}
 		</div>
 	);
 };

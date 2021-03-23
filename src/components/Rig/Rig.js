@@ -33,8 +33,8 @@ const rigs = (props) => {
 		}
 
 		return (
-			<div className={"sm:rounded-md overflow-hidden"}>
-				<DataArray key={dev.id} title={dev.name} bgColor={bgColor}>
+			<div key={dev.id} className={"sm:rounded-md overflow-hidden"}>
+				<DataArray  title={dev.name} bgColor={bgColor}>
 					{params}
 				</DataArray>
 				<div className={"flex "}>

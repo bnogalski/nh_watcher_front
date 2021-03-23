@@ -9,17 +9,21 @@ import reportWebVitals from './reportWebVitals';
 import './index.css';
 import App from './App';
 import rigsReducer from './store/reducers/rigs';
+import authReducer from './store/reducers/auth';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
 	rigs: rigsReducer,
+	auth: authReducer
 });
 
 const store = createStore(
 	rootReducer,
 	composeEnhancers(applyMiddleware(thunk))
 );
+
+
 
 ReactDOM.render(
 	<React.StrictMode>
